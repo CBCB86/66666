@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雅清，生日快乐！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B8B',
+                        secondary: '#FFC3D1',
+                        accent: '#FF9AA2',
+                        dark: '#2A2A2A',
+                        light: '#FFF5F7',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-sparkle {
+                animation: sparkle 2s infinite;
+            }
+            .animate-bounce-slow {
+                animation: bounce 3s infinite;
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gradient-to-br from-light to-secondary min-h-screen">
+    <!-- 音频元素 -->
+    <audio id="birthdaySong" loop>
+        <source src="https://music.163.com/song/media/outer/url?id=2082151352.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 shadow-md transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary flex items-center">
+                <i class="fa fa-heart text-accent mr-2 animate-pulse"></i>
+                雅清生日快乐
+            </h1>
+            <button id="playButton" class="bg-primary hover:bg-primary/80 text-white px-4 py-2 rounded-full flex items-center transition-all duration-300 shadow-md hover:shadow-lg">
+                <i class="fa fa-play mr-2" id="playIcon"></i>
+                <span id="playText">播放音乐</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 pt-24 pb-16">
+        <!-- 欢迎横幅 -->
+        <section class="relative overflow-hidden rounded-2xl shadow-2xl mb-16 bg-white/50 backdrop-blur-sm">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30"></div>
+            <div class="relative p-8 md:p-16 text-center">
+                <h2 class="text-[clamp(2rem,5vw,4rem)] font-bold text-white text-shadow mb-4">
+                    雅清，生日快乐！
+                </h2>
+                <p class="text-[clamp(1rem,2vw,1.5rem)] text-dark/80 max-w-3xl mx-auto">
+                    愿你的每一天都充满阳光和欢笑，友谊长存，生日快乐！
+                </p>
+                
+                <!-- 装饰元素 -->
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+                
+                <!-- 浮动元素 -->
+                <div class="absolute top-1/4 left-10 animate-float">
+                    <i class="fa fa-star text-4xl text-primary/80"></i>
+                </div>
+                <div class="absolute top-1/3 right-10 animate-float" style="animation-delay: 1s;">
+                    <i class="fa fa-heart text-4xl text-accent/80"></i>
+                </div>
+                <div class="absolute bottom-1/4 left-1/4 animate-float" style="animation-delay: 2s;">
+                    <i class="fa fa-gift text-4xl text-primary/80"></i>
+                </div>
+                <div class="absolute bottom-1/3 right-1/4 animate-float" style="animation-delay: 3s;">
+                    <i class="fa fa-birthday-cake text-4xl text-accent/80"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 友谊祝福语 -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-center text-dark mb-10">友谊祝福语</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 卡片 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">致最珍贵的朋友</h4>
+                    <p class="text-dark/80">
+                        感谢你一直以来的陪伴和支持，无论顺境还是逆境，你始终在我身边。愿我们的友谊像美酒一样，越久越醇厚。生日快乐，我的挚友！
+                    </p>
+                </div>
+                
+                <!-- 卡片 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">友谊之光</h4>
+                    <p class="text-dark/80">
+                        朋友是生命中最璀璨的星辰，而你是其中最亮的一颗。感谢你给我的生活带来了无尽的欢乐和温暖。生日快乐，愿你的每一天都充满阳光！
+                    </p>
+                </div>
+                
+                <!-- 卡片 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-coffee"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">一起走过的日子</h4>
+                    <p class="text-dark/80">
+                        还记得我们一起度过的那些美好时光吗？无论是欢笑还是泪水，都是我们友谊的见证。愿未来还有更多的美好回忆等待我们去创造。生日快乐！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生日快乐祝福语 -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-center text-dark mb-10">生日快乐祝福语</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 卡片 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fa fa-birthday-cake"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">新的一岁，新的开始</h4>
+                    <p class="text-dark/80">
+                        愿新的一岁带给你无限的可能和机遇，每一个梦想都能成真，每一个努力都能有回报。生日快乐，愿你继续闪耀光芒！
+                    </p>
+                </div>
+                
+                <!-- 卡片 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fa fa-gift"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">生命的礼物</h4>
+                    <p class="text-dark/80">
+                        你是上天赐予我们最珍贵的礼物，你的笑容能照亮整个世界。愿你的生活如彩虹般绚丽多彩，生日快乐，永远年轻美丽！
+                    </p>
+                </div>
+                
+                <!-- 卡片 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-accent text-4xl mb-4">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">闪耀人生</h4>
+                    <p class="text-dark/80">
+                        愿你的人生像星星一样闪耀，无论走到哪里都能散发出温暖和光芒。生日快乐，愿你的未来充满无限的美好和幸福！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生日蛋糕 -->
+        <section class="text-center mb-16">
+            <h3 class="text-3xl font-bold text-center text-dark mb-10">生日快乐歌</h3>
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-10 shadow-xl max-w-2xl mx-auto">
+                <div class="relative inline-block mb-8">
+                    <!-- 蛋糕SVG -->
+                    <svg viewBox="0 0 200 200" class="w-64 h-64 mx-auto animate-bounce-slow">
+                        <!-- 盘子 -->
+                        <circle cx="100" cy="180" r="60" fill="#f0f0f0" stroke="#e0e0e0" stroke-width="5" />
+                        
+                        <!-- 蛋糕底部 -->
+                        <rect x="60" y="130" width="80" height="50" rx="10" ry="10" fill="#D2691E" />
+                        <rect x="65" y="135" width="70" height="10" rx="5" ry="5" fill="#DEB887" />
+                        <rect x="65" y="150" width="70" height="10" rx="5" ry="5" fill="#DEB887" />
+                        <rect x="65" y="165" width="70" height="10" rx="5" ry="5" fill="#DEB887" />
+                        
+                        <!-- 蛋糕顶部 -->
+                        <rect x="50" y="100" width="100" height="30" rx="15" ry="15" fill="#FFB6C1" />
+                        <path d="M50,100 Q100,70 150,100" fill="#FFC0CB" />
+                        
+                        <!-- 奶油装饰 -->
+                        <path d="M50,100 Q60,90 70,100 Q80,90 90,100 Q100,90 110,100 Q120,90 130,100 Q140,90 150,100" fill="#FFFFFF" />
+                        
+                        <!-- 蜡烛 -->
+                        <rect x="95" y="70" width="10" height="30" fill="#FF69B4" />
+                        <rect x="85" y="75" width="10" height="25" fill="#FF6347" />
+                        <rect x="105" y="75" width="10" height="25" fill="#FF6347" />
+                        
+                        <!-- 火焰 -->
+                        <circle cx="100" cy="65" r="8" fill="#FFD700" class="animate-sparkle" />
+                        <circle cx="90" cy="70" r="6" fill="#FFD700" class="animate-sparkle" style="animation-delay: 0.5s" />
+                        <circle cx="110" cy="70" r="6" fill="#FFD700" class="animate-sparkle" style="animation-delay: 1s" />
+                    </svg>
+                    
+                    <!-- 装饰星星 -->
+                    <div class="absolute -top-5 -left-5 animate-sparkle" style="animation-delay: 0.3s">
+                        <i class="fa fa-star text-primary text-2xl"></i>
+                    </div>
+                    <div class="absolute -top-8 right-10 animate-sparkle" style="animation-delay: 0.7s">
+                        <i class="fa fa-star text-accent text-2xl"></i>
+                    </div>
+                    <div class="absolute bottom-10 -right-5 animate-sparkle" style="animation-delay: 1.2s">
+                        <i class="fa fa-star text-primary text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- 音乐控制器 -->
+                <div class="mt-6">
+                    <button id="cakePlayButton" class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-full text-lg font-medium flex items-center justify-center mx-auto transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <i class="fa fa-music mr-2"></i>
+                        点击播放韩磊《祝你生日快乐》
+                    </button>
+                    
+                    <div id="progressContainer" class="mt-6 w-full h-2 bg-gray-200 rounded-full overflow-hidden hidden">
+                        <div id="progressBar" class="h-full bg-primary transition-all duration-100" style="width: 0%"></div>
+                    </div>
+                    
+                    <p id="songStatus" class="mt-4 text-dark/70 hidden">正在播放: 韩磊《祝你生日快乐》</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 留言区 -->
+        <section>
+            <h3 class="text-3xl font-bold text-center text-dark mb-10">给雅清的留言</h3>
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
+                <form id="messageForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-dark font-medium mb-2">你的名字</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring focus:ring-primary/20 transition-all duration-300" placeholder="请输入你的名字" required>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-dark font-medium mb-2">你的祝福</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring focus:ring-primary/20 transition-all duration-300" placeholder="写下你对雅清的祝福..." required></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <i class="fa fa-paper-plane mr-2"></i>
+                            发送祝福
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="messages" class="mt-10 space-y-6">
+                    <!-- 示例留言 -->
+                    <div class="bg-light p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold text-primary">小明</h4>
+                            <span class="text-sm text-dark/60">今天 12:30</span>
+                        </div>
+                        <p class="text-dark/80">雅清，生日快乐！希望你新的一岁一切顺利，心想事成！</p>
+                    </div>
+                    
+                    <div class="bg-light p-6 rounded-xl shadow-md">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold text-primary">小红</h4>
+                            <span class="text-sm text-dark/60">今天 10:15</span>
+                        </div>
+                        <p class="text-dark/80">祝我们的小仙女生日快乐！愿你的生活永远充满阳光和欢笑！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>雅清，祝你生日快乐，天天开心！🎉</p>
+            <p class="mt-2 text-sm text-white/70">愿你的每一天都充满爱与喜悦</p>
+        </div>
+    </footer>
+
+    <!-- 装饰元素 -->
+    <div class="fixed top-0 left-0 right-0 bottom-0 pointer-events-none z-0">
+        <div id="confetti"></div>
+    </div>
+
+    <script>
+        // 音乐控制
+        const birthdaySong = document.getElementById('birthdaySong');
+        const playButton = document.getElementById('playButton');
+        const playIcon = document.getElementById('playIcon');
+        const playText = document.getElementById('playText');
+        const cakePlayButton = document.getElementById('cakePlayButton');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const songStatus = document.getElementById('songStatus');
+        const navbar = document.getElementById('navbar');
+        
+        // 播放/暂停音乐
+        function togglePlay() {
+            if (birthdaySong.paused) {
+                birthdaySong.play();
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                playText.textContent = '暂停音乐';
+                cakePlayButton.innerHTML = '<i class="fa fa-pause mr-2"></i> 暂停音乐';
+                progressContainer.classList.remove('hidden');
+                songStatus.classList.remove('hidden');
+                createConfetti();
+            } else {
+                birthdaySong.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                playText.textContent = '播放音乐';
+                cakePlayButton.innerHTML = '<i class="fa fa-music mr-2"></i> 点击播放韩磊《祝你生日快乐》';
+                progressContainer.classList.add('hidden');
+                songStatus.classList.add('hidden');
+            }
+        }
+        
+        // 更新进度条
+        birthdaySong.addEventListener('timeupdate', function() {
+            const percentage = (birthdaySong.currentTime / birthdaySong.duration) * 100;
+            progressBar.style.width = percentage + '%';
+        });
+        
+        // 歌曲结束重置按钮
+        birthdaySong.addEventListener('ended', function() {
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+            playText.textContent = '播放音乐';
+            cakePlayButton.innerHTML = '<i class="fa fa-music mr-2"></i> 点击播放韩磊《祝你生日快乐》';
+            progressContainer.classList.add('hidden');
+            songStatus.classList.add('hidden');
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+            }
+        });
+        
+        // 表单提交
+        const messageForm = document.getElementById('messageForm');
+        const messages = document.getElementById('messages');
+        
+        // 从本地存储加载留言
+        function loadMessages() {
+            const savedMessages = localStorage.getItem('birthdayMessages');
+            if (savedMessages) {
+                const messageList = JSON.parse(savedMessages);
+                messages.innerHTML = '';
+                
+                messageList.forEach(msg => {
+                    const newMessage = document.createElement('div');
+                    newMessage.className = 'bg-light p-6 rounded-xl shadow-md';
+                    newMessage.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold text-primary">${msg.name}</h4>
+                            <span class="text-sm text-dark/60">${msg.time}</span>
+                        </div>
+                        <p class="text-dark/80">${msg.message}</p>
+                    `;
+                    messages.prepend(newMessage);
+                });
+            }
+        }
+        
+        // 保存留言到本地存储
+        function saveMessage(name, message) {
+            const now = new Date();
+            const timeString = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const newMessage = {
+                name: name,
+                message: message,
+                time: timeString
+            };
+            
+            let messageList = [];
+            const savedMessages = localStorage.getItem('birthdayMessages');
+            if (savedMessages) {
+                messageList = JSON.parse(savedMessages);
+            }
+            
+            messageList.unshift(newMessage); // 添加到开头
+            localStorage.setItem('birthdayMessages', JSON.stringify(messageList));
+            
+            return newMessage;
+        }
+        
+        messageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            
+            // 保存到本地存储
+            const savedMessage = saveMessage(name, message);
+            
+            // 创建新的留言元素
+            const newMessage = document.createElement('div');
+            newMessage.className = 'bg-light p-6 rounded-xl shadow-md transform transition-all duration-500 opacity-0 translate-y-4';
+            newMessage.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <h4 class="font-semibold text-primary">${savedMessage.name}</h4>
+                    <span class="text-sm text-dark/60">${savedMessage.time}</span>
+                </div>
+                <p class="text-dark/80">${savedMessage.message}</p>
+            `;
+            
+            // 添加到留言列表
+            messages.prepend(newMessage);
+            
+            // 显示动画
+            setTimeout(() => {
+                newMessage.classList.remove('opacity-0', 'translate-y-4');
+            }, 10);
+            
+            // 清空表单
+            messageForm.reset();
+            
+            // 创建庆祝效果
+            createConfetti();
+        });
+        
+        // 点击蛋糕按钮播放音乐
+        cakePlayButton.addEventListener('click', togglePlay);
+        playButton.addEventListener('click', togglePlay);
+        
+        // 创建庆祝彩屑
+        function createConfetti() {
+            const confetti = document.getElementById('confetti');
+            confetti.innerHTML = '';
+            
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 10;
+                
+                confettiPiece.style.position = 'absolute';
+                confettiPiece.style.width = `${size}px`;
+                confettiPiece.style.height = `${size}px`;
+                confettiPiece.style.background = getRandomColor();
+                confettiPiece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confettiPiece.style.left = `${left}%`;
+                confettiPiece.style.top = '-10%';
+                confettiPiece.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                confettiPiece.style.opacity = Math.random() * 0.8 + 0.2;
+                confettiPiece.style.animation = `confetti ${duration}s ease ${delay}s forwards`;
+                
+                confetti.appendChild(confettiPiece);
+            }
+            
+            // 添加彩屑动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes confetti {
+                    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // 获取随机颜色
+        function getRandomColor() {
+            const colors = ['#FF6B8B', '#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7', '#C7CEEA'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // 页面加载时加载留言
+        document.addEventListener('DOMContentLoaded', loadMessages);
+    </script>
+</body>
+</html>
+    
